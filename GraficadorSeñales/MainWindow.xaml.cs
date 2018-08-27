@@ -24,6 +24,7 @@ namespace GraficadorSeñales
         {
             InitializeComponent();
 
+            /*
             plnGrafica.Points.Add(new Point(0, 10));
             plnGrafica.Points.Add(new Point(50, 20));
             plnGrafica.Points.Add(new Point(150, 10));
@@ -38,6 +39,57 @@ namespace GraficadorSeñales
             plnGrafica.Points.Add(new Point(850, 30));
             plnGrafica.Points.Add(new Point(950, 200));
             plnGrafica.Points.Add(new Point(1050, 10));
+            */
+
+            /*
+          SeñalSenoidal señal = new SeñalSenoidal();
+
+          for (double i = 0; i <= 1; i += 0.0001)
+          {
+              Console.WriteLine(señal.evaluar(i));
+          }
+          Console.ReadLine();
+          */
+        }
+
+        private void BotonGraficar_Click(object sender, RoutedEventArgs e)
+        {
+            double amplitud = double.Parse(txt_Amplitud.Text);
+            double fase = double.Parse(txt_Fase.Text);
+            double frecuencia = double.Parse(txt_Frecuencia.Text);
+            double tiempoInicial = double.Parse(txt_TiempoInicial.Text);
+            double tiempoFinal = double.Parse(txt_TiempoFinal.Text);
+            double frecuenciaMuestreo = double.Parse(txt_FrecuenciaDeMuestreo.Text);
+
+            SeñalSenoidal señal = new SeñalSenoidal(amplitud, fase, frecuencia);
+
+            plnGrafica.Points.Clear();
+
+            double periodoMuestreo = 1 / frecuenciaMuestreo;
+            for (double i = tiempoInicial; i <= tiempoFinal; i += periodoMuestreo)
+
+            {
+                double valorMuestra = señal.evaluar(i);
+
+                if (Math.Abs(valorMuestra) > señal.AmplitudMaxima)
+                {
+                    señal.AmplitudMaxima = Math.Abs(valorMuestra);
+
+                }
+
+               señal.Muestras.Add(new Muestra(i,valorMuestra));
+
+
+
+                
+            }
+
+            //Recorrer una coleccion o arreglo
+            foreach(Muestra muestra in señal.Muestras)
+            {
+
+                plnGrafica.Points.Add(new Point(muestra.X * scrContenedor.Width, (muestra.Y * ((scrContenedor.Height / 2) - 30) * -1 + (scrContenedor.Height / 2))));
+            }
         }
     }
 }
