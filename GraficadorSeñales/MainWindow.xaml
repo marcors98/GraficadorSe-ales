@@ -19,10 +19,11 @@
         <TextBox x:Name="txt_TiempoFinal" HorizontalAlignment="Left" Height="23" Margin="263,119,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="263,157,0,0" TextWrapping="Wrap" Text="Frecuendia de muestreo:" VerticalAlignment="Top" Width="143"/>
         <TextBox x:Name="txt_FrecuenciaDeMuestreo" HorizontalAlignment="Left" Height="23" Margin="263,184,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="BotonGraficar" Content="Graficar" HorizontalAlignment="Left" Margin="430,60,0,0" VerticalAlignment="Top" Width="87" Height="23" Click="BotonGraficar_Click" />
+        <Button x:Name="BotonGraficar" Content="Graficar señal senoidal" HorizontalAlignment="Left" Margin="430,60,0,0" VerticalAlignment="Top" Width="165" Height="23" Click="BotonGraficar_Click" />
         <ScrollViewer x:Name="scrContenedor" HorizontalAlignment="Left" Height="170" Margin="25,225,0,0" VerticalAlignment="Top" Width="739" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
             <Polyline x:Name="plnGrafica" Stroke="Black" StrokeThickness="2"/>
         </ScrollViewer>
+        <Button x:Name="btnGraficarRampa" Content="Graficar Señal Rampa" HorizontalAlignment="Left" Margin="430,99,0,0" VerticalAlignment="Top" Width="165" Click="Button_Click"/>
 
     </Grid>
 </Window>
