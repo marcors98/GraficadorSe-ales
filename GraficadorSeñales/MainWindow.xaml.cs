@@ -62,7 +62,7 @@ namespace GraficadorSeñales
             double frecuenciaMuestreo = double.Parse(txt_FrecuenciaDeMuestreo.Text);
 
             SeñalSenoidal señal = new SeñalSenoidal(amplitud, fase, frecuencia);
-           
+
 
             plnGrafica.Points.Clear();
 
@@ -78,23 +78,30 @@ namespace GraficadorSeñales
 
                 }
 
-               señal.Muestras.Add(new Muestra(i,valorMuestra));
- 
+                señal.Muestras.Add(new Muestra(i, valorMuestra));
+
             }
 
-         
 
-       
+
+
             //Recorrer una coleccion o arreglo
-            foreach(Muestra muestra in señal.Muestras)
+            foreach (Muestra muestra in señal.Muestras)
             {
 
-                plnGrafica.Points.Add(new Point(muestra.X * scrContenedor.Width, (muestra.Y / señal.AmplitudMaxima  * ((scrContenedor.Height / 2) - 30) * -1 + (scrContenedor.Height / 2))));
+                plnGrafica.Points.Add(new Point((muestra.X - tiempoInicial) * scrContenedor.Width, (muestra.Y / señal.AmplitudMaxima * ((scrContenedor.Height / 2) - 30) * -1 + (scrContenedor.Height / 2))));
             }
 
-            lblAmplitudMaximaY.Text = señal.AmplitudMaxima.ToString();
-            lblAmplitudMaximaNegativaY.Text = "-" + señal.AmplitudMaxima.ToString();
+            plnEjeX.Points.Clear();
+            //Punto del principio
+            plnEjeX.Points.Add(new Point(0, (scrContenedor.Height / 2 )));
+            //Punto del fin
+            plnEjeX.Points.Add(new Point((tiempoFinal - tiempoInicial) * scrContenedor.Width ,  (scrContenedor.Height / 2)));
+
+
         }
+            
+            
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
