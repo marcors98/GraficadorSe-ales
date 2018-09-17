@@ -61,28 +61,30 @@ namespace GraficadorSeñales
             double tiempoFinal = double.Parse(txt_TiempoFinal.Text);
             double frecuenciaMuestreo = double.Parse(txt_FrecuenciaDeMuestreo.Text);
 
-            SeñalSenoidal señal = new SeñalSenoidal(amplitud, fase, frecuencia);
+            Señal señal;
+           switch(cbTipoSeñal.SelectedIndex)
+            {
+                //Senoidal
+                case 0 :
+                    señal = new SeñalSenoidal(amplitud, fase, frecuencia);
+                    break;
+                //Rampa
+                case 1:
+                    señal = new SeñalRampa();
+                    break;
+                default:
+                    señal = null;
+                    break;
+            }
+            señal.TiempoInicial = tiempoInicial;
+            señal.TiempoFinal = tiempoFinal;
+            señal.FrecuenciaMuestreo = frecuenciaMuestreo;
+
+            señal.contruirSeñalDigital();
+           
 
 
             plnGrafica.Points.Clear();
-
-            double periodoMuestreo = 1 / frecuenciaMuestreo;
-            for (double i = tiempoInicial; i <= tiempoFinal; i += periodoMuestreo)
-
-            {
-                double valorMuestra = señal.evaluar(i);
-
-                if (Math.Abs(valorMuestra) > señal.AmplitudMaxima)
-                {
-                    señal.AmplitudMaxima = Math.Abs(valorMuestra);
-
-                }
-
-                señal.Muestras.Add(new Muestra(i, valorMuestra));
-
-            }
-
-
 
 
             //Recorrer una coleccion o arreglo
@@ -114,6 +116,8 @@ namespace GraficadorSeñales
 
             plnGrafica.Points.Clear();
 
+            
+
             double periodoMuestreo = 1 / frecuenciaMuestreo;
 
             for (double i = tiempoInicial; i <= tiempoFinal; i += periodoMuestreo)
@@ -131,12 +135,18 @@ namespace GraficadorSeñales
 
             }
 
-            //Recorrer una coleccion o arreglo
-            foreach (Muestra muestra in señal.Muestras)
+            if (señal != null)
             {
+                //Recorrer una coleccion o arreglo
+                foreach (Muestra muestra in señal.Muestras)
+                {
 
-                plnGrafica.Points.Add(new Point(muestra.X * scrContenedor.Width, (muestra.Y * ((scrContenedor.Height / 2) - 30) * -1 + (scrContenedor.Height / 2))));
+                    plnGrafica.Points.Add(new Point(muestra.X * scrContenedor.Width, (muestra.Y * ((scrContenedor.Height / 2) - 30) * -1 + (scrContenedor.Height / 2))));
+                }
+
+               
             }
+           
         }
     }
 }
