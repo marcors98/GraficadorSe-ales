@@ -8,21 +8,17 @@ namespace GraficadorSeñales
 {
     class SeñalSenoidal : Señal
     {
-        public double Amplitud { get; set; }
-        public double Fase { get; set; }
-        public double Frecuencia { get; set; }
-
         public SeñalSenoidal()
         {
-            Amplitud = 1.0;
-            Fase = 0.0;
-            Frecuencia = 1.0;
-           Muestras = new List<Muestra>();
+            Amplitud = 1;
+            Fase = 0;
+            Frecuencia = 1;
+            Muestras = new List<Muestra>();
             AmplitudMaxima = 0.0;
         }
 
-        public SeñalSenoidal(double amplitud, double fase, double frecuencia)
-        {
+        public SeñalSenoidal(double amplitud, double fase, double frecuencia) // Los constructores se llaman como la clase
+        {                       // Éstas de arriba son variables internas
             Amplitud = amplitud;
             Fase = fase;
             Frecuencia = frecuencia;
@@ -33,7 +29,9 @@ namespace GraficadorSeñales
         override public double evaluar(double tiempo)
         {
             double resultado;
-            resultado = Amplitud * Math.Sin(((2 * Math.PI * Frecuencia) * tiempo) + Fase);
+
+            resultado = Amplitud * Math.Sin((2 * Math.PI * Frecuencia * tiempo) + Fase);
+
             return resultado;
         }
     }

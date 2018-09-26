@@ -10,31 +10,32 @@ namespace GraficadorSeñales
     {
         public List<Muestra> Muestras { get; set; }
         public double AmplitudMaxima { get; set; }
-        double TiempoInicial { get; set; }
-        double TiempoFinal { get; set; }
+        public double Amplitud { get; set; }
+        public double Fase { get; set; }
+        public double Frecuencia { get; set; }
         public double FrecuenciaMuestreo { get; set; }
+        public double TiempoInicial { get; set; }
+        public double TiempoFinal { get; set; }
+        public double Alpha { get; set; }
 
-        public abstract double evaluar(double tiempo);
+        abstract public double evaluar(double tiempo);
 
-        public void constuirSeñalDigital()
+        public void construirSeñalDigital()
         {
-
             double periodoMuestreo = 1 / FrecuenciaMuestreo;
 
             for (double i = TiempoInicial; i <= TiempoFinal; i += periodoMuestreo)
-
             {
                 double valorMuestra = evaluar(i);
 
                 if (Math.Abs(valorMuestra) > AmplitudMaxima)
                 {
                     AmplitudMaxima = Math.Abs(valorMuestra);
-
                 }
 
                 Muestras.Add(new Muestra(i, valorMuestra));
-
             }
+
         }
     }
 }
