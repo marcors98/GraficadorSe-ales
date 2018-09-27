@@ -92,6 +92,16 @@ namespace GraficadorSeñales
 
             señal.construirSeñalDigital();
 
+            //Escalar
+            double factorEscala = double.Parse(txtFactorEscalaAmplitud.Text);
+            señal.escalar(factorEscala);
+
+            señal.actualizarAmplitudMaxima();
+
+
+
+
+
             plnGrafica.Points.Clear();
 
             if (señal != null)
@@ -117,6 +127,11 @@ namespace GraficadorSeñales
             plnEjeY.Points.Add(new Point((-tiempoInicial) * scrContenedor.Width, scrContenedor.Height));
         }
 
+        private void Cb_Escala_Checked(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private void cb_TipoSeñal_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             panelConfiguracion.Children.Clear();
@@ -139,6 +154,23 @@ namespace GraficadorSeñales
                     break;
             }
         }
+
+        //habilitar checkbox
+        private void cb_Escalar(Object sender, EventArgs e)
+        {
+            {
+                if (cb_Escala.IsChecked == true)
+                {
+                    txtFactorEscalaAmplitud.IsEnabled = true;
+                }
+                else
+                {
+                    txtFactorEscalaAmplitud.IsEnabled = false;
+                }
+            }
+
+        }
+
 
 
     }
