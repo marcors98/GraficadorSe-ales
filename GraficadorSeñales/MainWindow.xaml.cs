@@ -96,11 +96,17 @@ namespace GraficadorSeñales
             double factorEscala = double.Parse(txtFactorEscalaAmplitud.Text);
             señal.escalar(factorEscala);
 
+            // Desplazar
+            if ((bool)ckb_Desplazamiento.IsChecked)
+            {
+                double factorDesplazamiento = double.Parse(txt_Desplazamiento.Text);
+                señal.desplazar(factorDesplazamiento);
+            }
+
+            // Actualizar
             señal.actualizarAmplitudMaxima();
 
-
-
-
+          
 
             plnGrafica.Points.Clear();
 
@@ -127,10 +133,6 @@ namespace GraficadorSeñales
             plnEjeY.Points.Add(new Point((-tiempoInicial) * scrContenedor.Width, scrContenedor.Height));
         }
 
-        private void Cb_Escala_Checked(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
 
         private void cb_TipoSeñal_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -150,28 +152,10 @@ namespace GraficadorSeñales
 
                 // Señal Senoidal
                 case 2:
-                    panelConfiguracion.Children.Add(new ConfiguiracionSeñalExponencial());
+                    panelConfiguracion.Children.Add(new ConfiguracionSeñalExponencial());
                     break;
             }
         }
-
-        //habilitar checkbox
-        private void cb_Escalar(Object sender, EventArgs e)
-        {
-            {
-                if (cb_Escala.IsChecked == true)
-                {
-                    txtFactorEscalaAmplitud.IsEnabled = true;
-                }
-                else
-                {
-                    txtFactorEscalaAmplitud.IsEnabled = false;
-                }
-            }
-
-        }
-
-
 
     }
 }
