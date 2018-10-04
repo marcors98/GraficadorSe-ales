@@ -39,11 +39,14 @@
             <ComboBoxItem>Señal Exponencial</ComboBoxItem>
         </ComboBox>
         <TextBlock x:Name="lbl_ComboBox" HorizontalAlignment="Left" Margin="560.073,78,0,0" TextWrapping="Wrap" Text="Tipo de Señal" VerticalAlignment="Top" Grid.Column="1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="187,13,0,0" TextWrapping="Wrap" Text="Escala de Amplitud" VerticalAlignment="Top" Height="17" Width="119" Grid.Column="1"/>
+        <TextBlock x:Name="lbl_EscalaAmplitud" HorizontalAlignment="Left" Margin="187,13,0,0" TextWrapping="Wrap" Text="Escala de Amplitud" VerticalAlignment="Top" Height="17" Width="119" Grid.Column="1"/>
         <TextBox x:Name="txtFactorEscalaAmplitud" HorizontalAlignment="Left" Height="23" Margin="187,37,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="188,71,0,0" TextWrapping="Wrap" Text="Desplazamiento en Y" VerticalAlignment="Top" Width="117"/>
-        <TextBox x:Name="txtDesplazamientoEnY" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="187,95,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
-        <CheckBox x:Name="cb_Escala"  Grid.Column="1" HorizontalAlignment="Left" Margin="309,40,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cb_Desplazamiento"  Grid.Column="1" HorizontalAlignment="Left" Margin="309,99,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lbl_Desplazamiento" Grid.Column="1" HorizontalAlignment="Left" Margin="188,71,0,0" TextWrapping="Wrap" Text="Desplazamiento en Y" VerticalAlignment="Top" Width="117"/>
+        <TextBox x:Name="txt_DesplazamientoEnY" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="187,95,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
+        <CheckBox x:Name="ckb_Escala"  Grid.Column="1" HorizontalAlignment="Left" Margin="309,40,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="ckb_Desplazamiento"  Grid.Column="1" HorizontalAlignment="Left" Margin="309,99,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="ckb_Truncar" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="309,151,0,0" VerticalAlignment="Top" Height="20" Width="25"/>
+        <TextBox x:Name="txt_Truncar" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="188,147,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="lbl_Truncar" Grid.Column="1" HorizontalAlignment="Left" Margin="190,127,0,0" TextWrapping="Wrap" Text="Truncar" VerticalAlignment="Top" Width="112"/>
     </Grid>
 </Window>

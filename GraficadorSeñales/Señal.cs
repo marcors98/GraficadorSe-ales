@@ -58,6 +58,27 @@ namespace GraficadorSeñales
             }
         }
 
-       
+        public void desplazar(double factor)
+        {
+            foreach (Muestra muestra in Muestras)
+            {
+                muestra.Y += factor;
+            }
+        }
+
+        public void truncar(double n)
+        {
+            foreach (Muestra muestra in Muestras)
+            {
+                if (muestra.Y > n)
+                {
+                    muestra.Y = n;
+                }
+                else if (muestra.Y < -n)
+                {
+                    muestra.Y = -n;
+                }
+            }
+        }
     }
 }

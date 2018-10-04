@@ -99,8 +99,15 @@ namespace GraficadorSeñales
             // Desplazar
             if ((bool)ckb_Desplazamiento.IsChecked)
             {
-                double factorDesplazamiento = double.Parse(txt_Desplazamiento.Text);
+                double factorDesplazamiento = double.Parse(txt_DesplazamientoEnY.Text);
                 señal.desplazar(factorDesplazamiento);
+            }
+
+            //Truncar
+            if ((bool)ckb_Truncar.IsChecked)
+            {
+                double n = double.Parse(txt_Truncar.Text);
+                señal.truncar(n);
             }
 
             // Actualizar
@@ -152,10 +159,16 @@ namespace GraficadorSeñales
 
                 // Señal Senoidal
                 case 2:
-                    panelConfiguracion.Children.Add(new ConfiguracionSeñalExponencial());
+                    panelConfiguracion.Children.Add(new ConfiguiracionSeñalExponencial());
                     break;
             }
         }
+
+      
+
+
+
+      
 
     }
 }
