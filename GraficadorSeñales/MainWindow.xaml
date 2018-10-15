@@ -32,7 +32,7 @@
         <TextBlock x:Name="lbl_AmplitudMaxima" HorizontalAlignment="Left" Margin="26,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="16"/>
         <TextBlock x:Name="lbl_AmplitudMinima" HorizontalAlignment="Left" Margin="26,186,0,0" Grid.Row="1" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="16"/>
         <TextBlock x:Name="lbl_AmplitudCero" HorizontalAlignment="Left" Margin="26,99,0,0" Grid.Row="1" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="16"/>
-        <StackPanel x:Name="panelConfiguracion" HorizontalAlignment="Left" Height="114" Margin="10,62,0,0" VerticalAlignment="Top" Width="174" Grid.ColumnSpan="2"/>
+        <StackPanel x:Name="panelConfiguracion" HorizontalAlignment="Left" Height="114" Margin="10,50,0,0" VerticalAlignment="Top" Width="174" Grid.ColumnSpan="2"/>
         <ComboBox x:Name="cb_TipoSeñal" SelectedIndex="0" HorizontalAlignment="Left" Margin="25,23,0,0" VerticalAlignment="Top" Width="159" SelectionChanged="cb_TipoSeñal_SelectionChanged" Grid.ColumnSpan="2">
             <ComboBoxItem>Señal Senoidal</ComboBoxItem>
             <ComboBoxItem>Señal Rampa</ComboBoxItem>
@@ -48,6 +48,7 @@
         <CheckBox x:Name="ckb_Truncar" Content="" HorizontalAlignment="Left" Margin="209,144,0,0" VerticalAlignment="Top" Height="20" Width="26" RenderTransformOrigin="1,0.45" Grid.Column="1"/>
         <TextBox x:Name="txt_Truncar" HorizontalAlignment="Left" Height="23" Margin="80,141,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
         <TextBlock x:Name="lbl_Truncar" HorizontalAlignment="Left" Margin="82,121,0,0" TextWrapping="Wrap" Text="Truncar" VerticalAlignment="Top" Width="112" Grid.Column="1"/>
+        <StackPanel x:Name="panelConfiguracion2" HorizontalAlignment="Left" Height="129" Margin="242,64,0,0" VerticalAlignment="Top" Width="174" Grid.Column="1"/>
         <ComboBox x:Name="cb_TipoSeñal2" SelectedIndex="0" HorizontalAlignment="Left" Margin="257,34,0,0" VerticalAlignment="Top" Width="159" SelectionChanged="cb_TipoSeñal2_SelectionChanged" Grid.Column="1">
             <ComboBoxItem Content="Señal Senoidal"/>
             <ComboBoxItem Content="Señal Rampa"/>
@@ -72,6 +73,6 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <StackPanel x:Name="panelConfiguracion2" HorizontalAlignment="Left" Height="129" Margin="242,56,0,0" VerticalAlignment="Top" Width="174" Grid.Column="1"/>
+       
     </Grid>
 </Window>
