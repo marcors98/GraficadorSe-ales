@@ -20,6 +20,9 @@ namespace GraficadorSeñales
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        double amplitudMaxima = 1;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -87,7 +90,7 @@ namespace GraficadorSeñales
                     break;
             }
             //segundaSeñal
-            switch (cb_TipoSeñal.SelectedIndex)
+            switch (cb_TipoSeñal2.SelectedIndex)
             {
                 // Señal Senoidal
                 case 0:
@@ -124,6 +127,7 @@ namespace GraficadorSeñales
             segundaSeñal.FrecuenciaMuestreo = frecuenciaMuestreo;
 
             señal.construirSeñalDigital();
+            segundaSeñal.construirSeñalDigital();
 
             //Escalar
             double factorEscala = double.Parse(txtFactorEscalaAmplitud.Text);
@@ -164,21 +168,42 @@ namespace GraficadorSeñales
 
             // Actualizar
             señal.actualizarAmplitudMaxima();
+            segundaSeñal.actualizarAmplitudMaxima();
 
-          
+            amplitudMaxima = señal.AmplitudMaxima;
+            if (segundaSeñal.AmplitudMaxima > amplitudMaxima)
+            {
+                amplitudMaxima = segundaSeñal.AmplitudMaxima;
+            }
 
             plnGrafica.Points.Clear();
+            plnGraficaDos.Points.Clear();
+
+            lbl_AmplitudMaxima.Text = amplitudMaxima.ToString("F");
+            lbl_AmplitudMinima.Text = "-" + amplitudMaxima.ToString("F");
 
             if (señal != null)
             {
                 // Sirve para recorrer una coleccion o arreglo
                 foreach (Muestra muestra in señal.Muestras)
                 {
-                    plnGrafica.Points.Add(new Point((muestra.X - tiempoInicial) * scrContenedor.Width, (muestra.Y / señal.AmplitudMaxima * ((scrContenedor.Height / 2) - 30) * -1 + (scrContenedor.Height / 2))));
+                    plnGrafica.Points.Add(new Point((muestra.X - tiempoInicial) * scrContenedor.Width
+                        , (muestra.Y / amplitudMaxima * ((scrContenedor.Height / 2) - 30) * -1
+                        + (scrContenedor.Height / 2)))
+                        );
                 }
-
-                lbl_AmplitudMaxima.Text = señal.AmplitudMaxima.ToString("F");
-                lbl_AmplitudMinima.Text = "-" + señal.AmplitudMaxima.ToString("F");
+            }
+            //SegundaSeñal
+            if (segundaSeñal != null)
+            {
+                // Sirve para recorrer una coleccion o arreglo
+                foreach (Muestra muestra in segundaSeñal.Muestras)
+                {
+                    plnGraficaDos.Points.Add(new Point((muestra.X - tiempoInicial) * scrContenedor.Width
+                        , (muestra.Y / amplitudMaxima * ((scrContenedor.Height / 2) - 30) * -1
+                        + (scrContenedor.Height / 2)))
+                        );
+                }
             }
 
             // Línea del Eje X

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GraficadorSeñales"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="903.659">
+        Title="MainWindow" Height="923.768" Width="903.659">
     <Grid Margin="-2,0,2,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="129*"/>
@@ -21,17 +21,18 @@
         <TextBox x:Name="txt_TiempoFinal" HorizontalAlignment="Left" Height="20" Margin="597,81,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="107" Grid.Column="1"/>
         <TextBlock x:Name="lbl_FrecuenciaDeMuestreo" HorizontalAlignment="Left" Margin="599,108,0,0" TextWrapping="Wrap" Text="Frecuencia de Muestreo" VerticalAlignment="Top" Grid.Column="1" Height="17" Width="132"/>
         <TextBox x:Name="txt_FrecuenciaDeMuestreo" HorizontalAlignment="Left" Height="19" Margin="596,130,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="122" Grid.Column="1"/>
-        <Button x:Name="BotonGraficar" Content="Graficar" HorizontalAlignment="Left" Margin="560,165,0,0" VerticalAlignment="Top" Width="158" Click="BotonGraficar_Click" Grid.Column="1"/>
-        <ScrollViewer x:Name="scrContenedor" HorizontalAlignment="Left" Height="224" Margin="53,0,0,0" VerticalAlignment="Top" Width="739" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.ColumnSpan="2">
+        <Button x:Name="BotonGraficar" Content="Graficar" HorizontalAlignment="Left" Margin="560,165,0,0" VerticalAlignment="Top" Width="164" Click="BotonGraficar_Click" Grid.Column="1"/>
+        <ScrollViewer x:Name="scrContenedor" HorizontalAlignment="Left" Height="210" Margin="80,311,0,0" VerticalAlignment="Top" Width="740" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2">
             <Grid>
                 <Polyline Stroke="Blue" StrokeThickness="2" Name="plnGrafica"/>
+                <Polyline Stroke="Pink" StrokeThickness="2" Name="plnGraficaDos"/>
                 <Polyline Stroke="Black" StrokeThickness="0.3" Name="plnEjeX"/>
                 <Polyline Stroke="Black" StrokeThickness="0.3" Name="plnEjeY"/>
             </Grid>
         </ScrollViewer>
-        <TextBlock x:Name="lbl_AmplitudMaxima" HorizontalAlignment="Left" Margin="26,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBlock x:Name="lbl_AmplitudMinima" HorizontalAlignment="Left" Margin="26,186,0,0" Grid.Row="1" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBlock x:Name="lbl_AmplitudCero" HorizontalAlignment="Left" Margin="26,99,0,0" Grid.Row="1" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock x:Name="lbl_AmplitudMaxima" HorizontalAlignment="Left" Margin="54,321,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock x:Name="lbl_AmplitudMinima" HorizontalAlignment="Left" Margin="52,507,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock x:Name="lbl_AmplitudCero" HorizontalAlignment="Left" Margin="54,410,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="16"/>
         <StackPanel x:Name="panelConfiguracion" HorizontalAlignment="Left" Height="114" Margin="10,50,0,0" VerticalAlignment="Top" Width="174" Grid.ColumnSpan="2"/>
         <ComboBox x:Name="cb_TipoSeñal" SelectedIndex="0" HorizontalAlignment="Left" Margin="25,23,0,0" VerticalAlignment="Top" Width="159" SelectionChanged="cb_TipoSeñal_SelectionChanged" Grid.ColumnSpan="2">
             <ComboBoxItem>Señal Senoidal</ComboBoxItem>
@@ -73,6 +74,23 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-       
+        <ScrollViewer x:Name="scrContenedor_Resultado" HorizontalAlignment="Left" Height="210" Margin="77,584,0,0" VerticalAlignment="Top" Width="739" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <Grid>
+                <Polyline Stroke="Red" StrokeThickness="3" x:Name="plnGraficaResultado"/>
+                <Polyline Stroke="Black" StrokeThickness="0.3" x:Name="plnEjeXResultado"/>
+                <Polyline Stroke="Black" StrokeThickness="0.3" x:Name="plnEjeYResultado"/>
+            </Grid>
+        </ScrollViewer>
+        <TextBlock x:Name="lbl_AmplitudMaxima_Copy" HorizontalAlignment="Left" Margin="50,594,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock x:Name="lbl_AmplitudMinima_Copy" HorizontalAlignment="Left" Margin="48,103,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="16" Grid.Row="1"/>
+        <TextBlock x:Name="lbl_AmplitudCero_Copy" HorizontalAlignment="Left" Margin="50,15,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="16" Grid.Row="1"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="565,193,0,0" TextWrapping="Wrap" Text="Operacion" VerticalAlignment="Top" Height="22" Width="121"/>
+        <ComboBox x:Name="cbTipoOperacion" Grid.Column="1" HorizontalAlignment="Left" Margin="563,214,0,0" VerticalAlignment="Top" Width="156">
+            <ComboBoxItem>Suma</ComboBoxItem>
+            <ComboBoxItem>Multiplicación</ComboBoxItem>
+        </ComboBox>
+        <Button x:Name="btnRealizarOperacion" Content="Realizar Operacón" Grid.Column="1" HorizontalAlignment="Left" Margin="564,248,0,0" VerticalAlignment="Top" Width="159" Height="32"/>
+
+
     </Grid>
 </Window>
